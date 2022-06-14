@@ -4,7 +4,7 @@ using DataFrames,Graphs
 #  传递对角线数据
 #  传递p值设定值
 #  传递相关性设定值
-```
+"""
 `CP2Link(linkcor::DataFrame,linkp::DataFrame,abscorrelation,pvalue;diagonalnumber=1.0)`
 According to the correlation coefficient and P value, it is determined whether there is a link between the two species.
 # Argument
@@ -23,7 +23,7 @@ using SpeciesToNetworks,DataFrames,RDatasets;
 dataframe=dataset("MASS","Boston");
 linkcor,linkp=SpeciesCP(dataframe,"spearman","BenjaminiHochberg");
 indexdf,edgedf,idnetmatrixdf,idnetbooldf=CP2Link(linkcor,linkp,0.6,0.05)
-```
+"""
 function CP2Link(linkcor::DataFrame,linkp::DataFrame,abscorrelation,pvalue;diagonalnumber=1.0)
 #  去除第一列的id信息，方便ij位置的确定
   linkcorij=linkcor[:,Not(1)]
@@ -84,7 +84,7 @@ function CP2Link(linkcor::DataFrame,linkp::DataFrame,abscorrelation,pvalue;diago
 end
 
 #  创建一个根据边信息和索引信息创建网络的函数
-```
+"""
 `Edge2Graph(edgedf::DataFrame,indexdf::DataFrame)`
 Generate a network based on a dataframe about edge information and a dataframe about vertex information.
 # Argument
@@ -98,7 +98,7 @@ dataframe=dataset("MASS","Boston");
 linkcor,linkp=SpeciesCP(dataframe,"spearman","BenjaminiHochberg");
 indexdf,edgedf,idnetmatrixdf,idnetbooldf=CP2Link(linkcor,linkp,0.6,0.05);
 net=Edge2Graph(edgedf,indexdf)
-```
+"""
 function Edge2Graph(edgedf::DataFrame,indexdf::DataFrame)
 #  获取edgedf,netmatrixdf的尺寸，a获得的就是连边数目，c获得的就是点数
   a,b=size(edgedf)
@@ -114,7 +114,7 @@ function Edge2Graph(edgedf::DataFrame,indexdf::DataFrame)
 end
 
 #  创建一个根据bool矩阵创建网络的函数
-```
+"""
 `Bool2Graph(idnetbooldf::DataFrame)`
 Generate a network based on a dataframe for storing the network matrix, whether there is a connection expressed by 0 and 1.
 # Argument
@@ -127,7 +127,7 @@ dataframe=dataset("MASS","Boston");
 linkcor,linkp=SpeciesCP(dataframe,"spearman","BenjaminiHochberg");
 indexdf,edgedf,idnetmatrixdf,idnetbooldf=CP2Link(linkcor,linkp,0.6,0.05);
 net=Bool2Graph(idnetbooldf)
-```
+"""
 function Bool2Graph(idnetbooldf::DataFrame)
 #  去除第一列id信息后将数据框矩阵化
   netbool=Matrix(idnetbooldf[:,Not(1)])

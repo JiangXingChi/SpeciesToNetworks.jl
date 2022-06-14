@@ -2,7 +2,7 @@
 using DataFrames,Statistics
 
 #  用于删除总丰度不足0.01%的物种
-```
+"""
 `RmPer(dataframe::DataFrame;setper=0.01)`
 Delete the species whose total abundance does not reach the set abundance, and the default minimum total abundance is 0.01.
 # Argument
@@ -16,7 +16,7 @@ dataframe=DataFrame(species1=[1,2],species2=[3,4],species3=[40,50]);
 selectdf1=RmPer(dataframe;setper=0.05);
 selectdf2=RmPer(dataframe;setper=0.1);
 print(dataframe,selectdf1,selectdf2)
-```
+"""
 function RmPer(dataframe::DataFrame;setper=0.01)
 #  计算列和，利用点语法进行广播
     colsum=sum.(eachcol(dataframe))
@@ -35,7 +35,7 @@ function RmPer(dataframe::DataFrame;setper=0.01)
   end
 
 #  用以处理各个分群，把独自类群中不存在的物种剔除
-```
+"""
 `RmZero(dataframe::DataFrame)`
 Delete all 0 columns.
 # Argument
@@ -47,7 +47,7 @@ using SpeciesToNetworks,DataFrames;
 dataframe=DataFrame(species1=[1,2,3],species2=[0,0,0],species3=[-1,0,1]);
 selectdf=RmZero(dataframe);
 print(dataframe,selectdf)
-```
+"""
 function RmZero(dataframe::DataFrame)
 #  获取dataframe的一维二维长度
   a,b=size(dataframe)
@@ -71,7 +71,7 @@ function RmZero(dataframe::DataFrame)
 end
 
 #  用于获取丰度矩阵
-```
+"""
 `Per(dataframe::DataFrame)`
 Convert the dataframe recording the number of species into the species abundance dataframe.
 # Argument
@@ -83,7 +83,7 @@ using SpeciesToNetworks,DataFrames;
 dataframe=DataFrame(species1=[1,0,1],species2=[8,5,0],species3=[1,5,9]);
 perdf=Per(dataframe);
 print(dataframe,perdf)
-```
+"""
 function Per(dataframe::DataFrame)
 #  计算行和，利用点语法进行广播
   rowsum=sum.(eachrow(dataframe))

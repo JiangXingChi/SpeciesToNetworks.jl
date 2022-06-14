@@ -2,7 +2,7 @@
 using MultipleTesting,HypothesisTests,StatsBase,Statistics,DataFrames
 
 #  设置一个计算关系系数的函数
-```
+"""
 `SpeciesCor(x::Vector,y::Vector,method::String)`
 To calculate the correlation coefficient between x vector and y vector, you need to specify whether Pearson method or Spearman method is used.
 # Argument
@@ -18,7 +18,7 @@ y=[1,2,300];
 i1=SpeciesCor(x,y,"spearman");
 i2=SpeciesCor(x,y,"pearson");
 print(i1,i2)
-```
+"""
 function SpeciesCor(x::Vector,y::Vector,method::String)
 #  当目的是进行spearman时，调用目的函数corspearman
   if method=="spearman"
@@ -32,7 +32,7 @@ function SpeciesCor(x::Vector,y::Vector,method::String)
 end
 
 #  设置一个计算关系系数的原始p值的函数
-```
+"""
 `SpeciesPvalue(x::Vector,y::Vector,method::String)`
 To calculate the correlation p value between x vector and y vector, you need to specify whether Pearson method or Spearman method is used.
 # Argument
@@ -48,7 +48,7 @@ y=[1,2,300];
 i1=SpeciesPvalue(x,y,"spearman");
 i2=SpeciesPvalue(x,y,"pearson");
 print(i1,i2)
-```
+"""
 function SpeciesPvalue(x::Vector,y::Vector,method::String)
 #  当目的时进行spearman时，调用目的函数pvalue和tiedrank
   if method=="spearman"
@@ -63,7 +63,7 @@ end
 
 #  设置一个函数对p值集合进行矫正
 #  根据adjustment决定矫正方法，调用MultipleTesting的相关函数以及不作任何处理的raw方法
-```
+"""
 `PvalueAdjustment(x::Vector,adjustment::String)`
 Adjust multiple p values.
 # Argument
@@ -77,7 +77,7 @@ x=[0.05,0.06,0.12,0.07,0.23,0.89,0.43,0.08,0.16];
 is1=PvalueAdjustment(x,"raw");
 is2=PvalueAdjustment(x,"BenjaminiHochberg");
 print(x,is1,is2)
-```
+"""
 function PvalueAdjustment(x::Vector,adjustment::String)
   if adjustment=="Bonferroni"
     is=MultipleTesting.adjust(MultipleTesting.PValues(x),Bonferroni())
@@ -113,7 +113,7 @@ end
 #  BenjaminiLiu,Hochberg
 #  Holm,Hommel,Sidak,ForwardStop
 #  BarberCandes
-```
+"""
 `SpeciesCP(dataframe::DataFrame,method::String,adjustment::String)`
 The abundance data of species can be transformed into two dataframes to store the correlation coefficient and correlation p value respectively.
 # Argument
@@ -127,7 +127,7 @@ The abundance data of species can be transformed into two dataframes to store th
 using SpeciesToNetworks,DataFrames;
 dataframe=DataFrame(species1=[1,1,0,0,0],species2=[3,3,2,2,2],species3=[1,1,2,2,2],species4=[1,2,3,4,5]);
 linkcor,linkp=SpeciesCP(dataframe,"spearman","BenjaminiHochberg")
-```
+"""
 function SpeciesCP(dataframe::DataFrame,method::String,adjustment::String)
 #  获取dataframe信息，实际上a就是样本数，b就是物种数/特征数
   a,b=size(dataframe)

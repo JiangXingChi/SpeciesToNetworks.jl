@@ -1,7 +1,7 @@
 using DataFrames,CategoricalArrays,Graphs,Statistics
 
 #  创建一个基于丰度数据快速提取某一处理的类群，快速转化为网络
-```
+"""
 `Group2Net(dataframe::DataFrame,groupcol::Int,groupname::String;method="spearman",adjustment="BenjaminiHochberg",abscorrelation=0.6,pvalue=0.05)`
 Create a network based on one group.
 # Argument
@@ -20,7 +20,7 @@ Create a network based on one group.
 using SpeciesToNetworks,Graphs,DataFrames,RDatasets;
 dataframe=dataset("datasets", "iris");
 indexdf,edgedf,net=Group2Net(dataframe,5,"setosa";method="spearman",adjustment="BenjaminiHochberg",abscorrelation=0.6,pvalue=0.05)
-```
+"""
 function Group2Net(dataframe::DataFrame,groupcol::Int,groupname::String;method="spearman",adjustment="BenjaminiHochberg",abscorrelation=0.6,pvalue=0.05)
 #  筛选满足某个种群名称的行
   tempdf=dataframe[dataframe[:,groupcol].==groupname,:]
@@ -39,7 +39,7 @@ function Group2Net(dataframe::DataFrame,groupcol::Int,groupname::String;method="
 end
 
 #  创建一个物种丰度数据获取网络属性的函数
-```
+"""
 `Groups2Netinf(dataframe::DataFrame,groupcol::Int;method="spearman",adjustment="BenjaminiHochberg",abscorrelation=0.6,pvalue=0.05,labeln=100)`
 Quickly obtain the basic network information of different groups according to the species abundance dataframe.
 # Argument
@@ -55,7 +55,7 @@ Quickly obtain the basic network information of different groups according to th
 using SpeciesToNetworks,DataFrames,RDatasets;
 dataframe=dataset("datasets", "iris");
 groupnetinf=Groups2Netinf(dataframe,5;method="spearman",adjustment="BenjaminiHochberg",abscorrelation=0.6,pvalue=0.05,labeln=100)
-```
+"""
 function Groups2Netinf(dataframe::DataFrame,groupcol::Int;method="spearman",adjustment="BenjaminiHochberg",abscorrelation=0.6,pvalue=0.05,labeln=100)
 #  获取种类数据
   group=levels(CategoricalArray(dataframe[:,groupcol]))

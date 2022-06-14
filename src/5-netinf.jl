@@ -1,7 +1,7 @@
 using DataFrames,Graphs,Statistics
 
 #  创建网络数据统合的网络
-```
+"""
 `NetInf(net,edgedf::DataFrame,labeln::Int)`
 Calculate some network properties by a network.
 # Argument
@@ -17,7 +17,7 @@ linkcor,linkp=SpeciesCP(dataframe,"spearman","BenjaminiHochberg");
 indexdf,edgedf,idnetmatrixdf,idnetbooldf=CP2Link(linkcor,linkp,0.6,0.05);
 net=Bool2Graph(idnetbooldf);
 netinf=NetInf(net,edgedf,100)
-```
+"""
 function NetInf(net,edgedf::DataFrame,labeln::Int)
 #  确定需要的统计对象
   rownames=["Total vertices",
@@ -91,7 +91,7 @@ function NetInf(net,edgedf::DataFrame,labeln::Int)
 end
 
 #  创建网络数据值的统合函数
-```
+"""
 `NetInfValue(net,edgedf::DataFrame,labeln::Int)`
 Calculate some network properties by a network.
 # Argument
@@ -107,7 +107,7 @@ linkcor,linkp=SpeciesCP(dataframe,"spearman","BenjaminiHochberg");
 indexdf,edgedf,idnetmatrixdf,idnetbooldf=CP2Link(linkcor,linkp,0.6,0.05);
 net=Bool2Graph(idnetbooldf);
 netinfvalue=NetInfValue(net,edgedf,100)
-```
+"""
 function NetInfValue(net,edgedf::DataFrame,labeln::Int)
 #  总节点数目
   tv=Graphs.nv(net)

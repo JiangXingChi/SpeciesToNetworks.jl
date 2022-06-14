@@ -1,7 +1,7 @@
 using Graphs,DataFrames,Statistics,CategoricalArrays
 
 #  设置一个逐步合并社团的函数
-```
+"""
 `ReduceLabel(comid::Vector,net)`
 Select two communities to merge, the evaluation standard is modularity Q value.
 # Argument
@@ -21,7 +21,7 @@ indexdf,edgedf,idnetmatrixdf,idnetbooldf=CP2Link(linkcor,linkp,0.6,0.05);
 net=Bool2Graph(idnetbooldf);
 comid=Graphs.label_propagation(net)[1];
 newcomid,Q,qvalue,newcomnumber,comnumber=ReduceLabel(comid,net)
-```
+"""
 function ReduceLabel(comid::Vector,net)
 #  获取初始社团数目
   comnumber=findmax(comid)[1]
@@ -70,7 +70,7 @@ function ReduceLabel(comid::Vector,net)
 end
 
 #  设置一个社团合并到极限的函数
-```
+"""
 `MinLabel(comid::Vector,net)`
 Select maximum communities to merge, the evaluation standard is modularity Q value.
 # Argument
@@ -90,7 +90,7 @@ indexdf,edgedf,idnetmatrixdf,idnetbooldf=CP2Link(linkcor,linkp,0.6,0.05);
 net=Bool2Graph(idnetbooldf);
 comid=Graphs.label_propagation(net)[1];
 newcomid,Q,beginqvalue,newcomnumber,begincomnumber=MinLabel(comid,net)
-```
+"""
 function MinLabel(comid::Vector,net)
 #  计算初始的模块度Q值
   beginqvalue=Graphs.modularity(net,comid)
@@ -108,7 +108,7 @@ function MinLabel(comid::Vector,net)
 end
 
 #  设置一个获取顶点标签数据的函数
-```
+"""
 `LabelDf(dataframe::DataFrame,groupcol::Int,groupname::String;method="spearman",adjustment="BenjaminiHochberg",abscorrelation=0.6,pvalue=0.05)`
 Create a label information based on one group.
 # Argument
@@ -130,7 +130,7 @@ Create a label information based on one group.
 using SpeciesToNetworks,DataFrames,RDatasets;
 dataframe=dataset("datasets", "iris");
 labeldf,edgedf,Q,beginqvalue,newcomnumber,begincomnumber=LabelDf(dataframe,5,"setosa";method="spearman",adjustment="BenjaminiHochberg",abscorrelation=0.6,pvalue=0.05)
-```
+"""
 function LabelDf(dataframe::DataFrame,groupcol::Int,groupname::String;method="spearman",adjustment="BenjaminiHochberg",abscorrelation=0.6,pvalue=0.05)
 #  筛选满足某个种群名称的行
   tempdf=dataframe[dataframe[:,groupcol].==groupname,:]

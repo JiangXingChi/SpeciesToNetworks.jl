@@ -2,7 +2,7 @@
 using DataFrames,StatsBase,Statistics
 
 #  定义一个计算AVD值的函数
-```
+"""
 `Avd(dataframe::DataFrame)`
 Calculate average variation degree by the [paper](https://www.researchgate.net/publication/348927379_Specialized_metabolic_functions_of_keystone_taxa_sustain_soil_microbiome_stability).
 # Argument
@@ -13,7 +13,7 @@ Calculate average variation degree by the [paper](https://www.researchgate.net/p
 using SpeciesToNetworks,DataFrames,RDatasets;
 dataframe=dataset("MASS","Boston");
 avdvalue=Avd(dataframe)
-```
+"""
 function Avd(dataframe::DataFrame)
 #  去除不存在的列
   dataframe=RmZero(dataframe)
@@ -41,7 +41,7 @@ function Avd(dataframe::DataFrame)
 end
 
 #  定义一个计算AVD值的函数
-```
+"""
 `WAvd(dataframe::DataFrame)`
 Calculate weighted average variation degree.
 # Argument
@@ -52,7 +52,7 @@ Calculate weighted average variation degree.
 using SpeciesToNetworks,DataFrames,RDatasets;
 dataframe=dataset("MASS","Boston");
 wavd=WAvd(dataframe)
-```
+"""
 function WAvd(dataframe::DataFrame)
 #  去除不存在的列
   dataframe=RmZero(dataframe)
