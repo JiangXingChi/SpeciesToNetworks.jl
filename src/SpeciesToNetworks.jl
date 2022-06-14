@@ -22,9 +22,9 @@ export RmPer,RmZero,Per,
        ReduceLabel,MinLabel,LabelDf
 
 #  设置文档
-```
+"""
 SpeciesToNetworks. jl is a tool to convert species abundance data into undirected network, the basic principle of the tool is to  judge whether there is a connection according to the Spearman or Pearson. 
-```
+"""
 SpeciesToNetworks
 
 end
