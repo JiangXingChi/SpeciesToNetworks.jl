@@ -3,7 +3,12 @@
 * SpeciesToNetworks. jl is a tool to convert species abundance data into undirected network, the basic principle of the tool is to  judge whether there is a connection according to the Spearman or Pearson. 
 * You can use ```?``` to read the document of functions in Julia(REPL), or read the README.md published in the [SpeciesToNetworks.jl](https://github.com/JiangXingChi/SpeciesToNetworks.jl) repository.
 #### Install
-* You can install this package by GitHub:
+* This package can be installed via Pkg:
+```
+using Pkg
+Pkg.add("SpeciesToNetworks")
+```
+* Or you can install this package by GitHub:
 ```
 using Pkg;
 Pkg.add(PackageSpec(url="https://github.com/JiangXingChi/SpeciesToNetworks.jl"))
