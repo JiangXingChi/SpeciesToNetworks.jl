@@ -54,7 +54,7 @@ end
 
 #  创建一个物种丰度数据获取网络属性的函数
 """
-`Groups2Net(dataframe::DataFrame,groupcol::Int;method="spearman",adjustment="BenjaminiHochberg",abscorrelation=0.6,pvalue=0.05,colfun="RmZeroVector",labeln=100)`
+`Groups2Net(dataframe::DataFrame,groupcol::Int;method="spearman",adjustment="BenjaminiHochberg",abscorrelation=0.6,pvalue=0.05,colfun="RmZeroVector",labeln=100, writemode="NO")`
 Quickly obtain the basic network information of different groups according to the species abundance dataframe.
 # Argument
 * `dataframe`:A dataframe containing species abundance information and the group of each sample.
