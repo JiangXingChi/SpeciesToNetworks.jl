@@ -8,7 +8,7 @@
 using Pkg
 Pkg.add("SpeciesToNetworks")
 ```
-* Or you can install this package by GitHub:
+* Or you can install this package by Gitee:
 ```
 using Pkg;
 Pkg.add(PackageSpec(url="https://gitee.com/pandalinux/SpeciesToNetworks.jl"))
